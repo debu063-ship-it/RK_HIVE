@@ -537,6 +537,32 @@ button {
   to { transform: translateX(0); }
 }
 
+/* Ambient Audio Wave Equalizer */
+.audio-equalizer {
+  display: flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 14px;
+}
+
+.eq-bar {
+  width: 2px;
+  background-color: var(--hive-forest);
+  border-radius: 1px;
+  animation: eqBounce 1.1s cubic-bezier(0.16, 1, 0.3, 1) infinite alternate;
+  transform-origin: bottom;
+}
+
+.bar-1 { height: 6px; animation-delay: 0.1s; }
+.bar-2 { height: 14px; animation-delay: 0.35s; }
+.bar-3 { height: 9px; animation-delay: 0.2s; }
+.bar-4 { height: 12px; animation-delay: 0.45s; }
+
+@keyframes eqBounce {
+  0% { transform: scaleY(0.35); opacity: 0.65; }
+  100% { transform: scaleY(1.15); opacity: 1; }
+}
+
 /* Intentional prefers-reduced-motion fallback */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -549,11 +575,13 @@ button {
   .reveal-fade-up,
   .directional-portrait-reveal,
   .card-panoramic-bg,
-  .banham-col-img {
+  .banham-col-img,
+  .eq-bar {
     transform: none !important;
     clip-path: none !important;
     opacity: 1 !important;
     transition: opacity 0.2s ease !important;
+    animation: none !important;
   }
 }
 

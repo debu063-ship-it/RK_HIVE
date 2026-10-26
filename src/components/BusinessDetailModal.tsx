@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, ArrowRight, Clock, MapPin, Sparkles, Check } from 'lucide-react';
 import type { BusinessItem } from './BusinessShowcase';
 
@@ -13,14 +13,34 @@ export const BusinessDetailModal: React.FC<BusinessDetailModalProps> = ({
   onClose,
   onBookNow,
 }) => {
+  useEffect(() => {
+    if (!business) return;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [business, onClose]);
+
   if (!business) return null;
 
   return (
     <div
       className="modal-overlay"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="business-detail-title"
     >
       <div
+        className="business-dialog-box"
         style={{
           width: '100%',
           maxWidth: '760px',
@@ -277,7 +297,17 @@ export const BusinessDetailModal: React.FC<BusinessDetailModalProps> = ({
       </div>
 
       <style>{`
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
+          .modal-overlay {
+            align-items: flex-end !important;
+            padding: 0 !important;
+          }
+          .business-dialog-box {
+            max-height: 94vh !important;
+            border-radius: 16px 16px 0 0 !important;
+            border-bottom: none !important;
+            animation: slideUpBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          }
           .modal-meta-grid {
             grid-template-columns: 1fr !important;
           }

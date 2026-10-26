@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, Mail, Phone, MapPin, ArrowRight, ShieldCheck } from 'lucide-react';
 
 interface ContactModalProps {
@@ -8,14 +8,34 @@ interface ContactModalProps {
 }
 
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onOpenEnquire }) => {
+  useEffect(() => {
+    if (!isOpen) return;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
     <div
       className="modal-overlay"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="contact-modal-title"
     >
       <div
+        className="contact-dialog-box"
         style={{
           width: '100%',
           maxWidth: '640px',
@@ -186,6 +206,21 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onO
           </button>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .modal-overlay {
+            align-items: flex-end !important;
+            padding: 0 !important;
+          }
+          .contact-dialog-box {
+            max-height: 94vh !important;
+            border-radius: 16px 16px 0 0 !important;
+            border-bottom: none !important;
+            animation: slideUpBottom 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

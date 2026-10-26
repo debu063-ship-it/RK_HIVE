@@ -25,9 +25,31 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll and handle Escape for menu drawer & search
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [menuOpen, searchOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMenuOpen(false);
+    setSearchOpen(false);
     const element = document.querySelector(href);
     if (element) {
       const navOffset = 76;
@@ -209,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <ShoppingBag size={18} strokeWidth={1.6} />
             </button>
 
-            {/* Ambient Lounge Soundscape Toggle */}
+            {/* Ambient Lounge Soundscape Toggle with Audio Equalizer Wave */}
             {onToggleAmbience && (
               <button
                 onClick={onToggleAmbience}
@@ -217,50 +239,123 @@ export const Navbar: React.FC<NavbarProps> = ({
                 title={isAmbiencePlaying ? 'Mute ambience' : 'Play ambient sound'}
                 style={{
                   color: isAmbiencePlaying ? 'var(--hive-forest)' : '#888E8B',
-                  padding: '0.35rem',
+                  padding: '0.35rem 0.55rem',
                   cursor: 'pointer',
                   display: 'flex',
                   alignItems: 'center',
+                  gap: '0.45rem',
+                  borderRadius: '2px',
+                  backgroundColor: isAmbiencePlaying ? 'rgba(23, 61, 51, 0.08)' : 'transparent',
+                  border: isAmbiencePlaying ? '1px solid rgba(23, 61, 51, 0.18)' : '1px solid transparent',
+                  transition: 'all 0.25s ease',
                 }}
               >
                 {isAmbiencePlaying ? <Volume2 size={18} strokeWidth={1.6} /> : <VolumeX size={18} strokeWidth={1.6} />}
+                {isAmbiencePlaying && (
+                  <div className="audio-equalizer" style={{ display: 'flex', alignItems: 'center', gap: '2px', height: '14px' }}>
+                    <span className="eq-bar bar-1" />
+                    <span className="eq-bar bar-2" />
+                    <span className="eq-bar bar-3" />
+                    <span className="eq-bar bar-4" />
+                  </div>
+                )}
               </button>
             )}
           </div>
         </div>
 
-
-        {/* Search Bar Dropdown */}
+        {/* Search Bar Dropdown with Instant Matching */}
         {searchOpen && (
           <div
             style={{
               borderTop: '1px solid #EBEBEB',
               backgroundColor: '#FAF9F6',
-              padding: '1rem 0',
-              animation: 'fadeIn 0.2s ease',
+              padding: '1.25rem 0 1.5rem',
+              animation: 'fadeInOverlay 0.2s ease',
+              boxShadow: '0 8px 24px rgba(0, 0, 0, 0.06)',
             }}
           >
-            <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <Search size={18} style={{ color: '#777' }} />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search across The Lounge RK 2.0, The Lounge RK, Automobiles..."
-                autoFocus
-                style={{
-                  width: '100%',
-                  border: 'none',
-                  backgroundColor: 'transparent',
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: '0.9rem',
-                  outline: 'none',
-                  color: '#111',
-                }}
-              />
-              <button onClick={() => setSearchOpen(false)} style={{ color: '#888' }}>
-                <X size={18} />
-              </button>
+            <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <Search size={18} style={{ color: '#777' }} />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search across The Lounge RK 2.0, The Lounge RK, Automobiles..."
+                  autoFocus
+                  style={{
+                    width: '100%',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.95rem',
+                    outline: 'none',
+                    color: '#111',
+                  }}
+                />
+                <button 
+                  onClick={() => {
+                    setSearchOpen(false);
+                    setSearchQuery('');
+                  }} 
+                  style={{ color: '#888', padding: '0.2rem' }}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Instant Search Filter Results */}
+              {searchQuery.trim().length > 0 && (
+                <div style={{ borderTop: '1px solid #ECEAE3', paddingTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  {[
+                    { title: 'The Lounge RK 2.0', desc: 'Daylight dining & botanical terrace pavilion', href: '#lounge-2-split' },
+                    { title: 'The Lounge RK', desc: 'Intimate evening cocktails & curated soundscapes', href: '#lounge-classic-split' },
+                    { title: 'Automobiles & Fleet', desc: 'Curated luxury motors & superbikes atelier', href: '#automobiles-grid' },
+                    { title: 'About Rahat Khan', desc: 'Founder & Visionary enterprise leadership', href: '#about' },
+                    { title: 'Concierge & Enquiries', desc: 'Private appointments & VIP reservations', action: () => onOpenEnquire() },
+                  ].filter(item => 
+                    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    item.desc.toLowerCase().includes(searchQuery.toLowerCase())
+                  ).map((res) => (
+                    <div
+                      key={res.title}
+                      onClick={(e) => {
+                        if (res.action) {
+                          res.action();
+                        } else if (res.href) {
+                          handleNavClick(e as any, res.href);
+                        }
+                        setSearchOpen(false);
+                        setSearchQuery('');
+                      }}
+                      style={{
+                        padding: '0.55rem 0.85rem',
+                        backgroundColor: '#FFFFFF',
+                        border: '1px solid #EAE8E2',
+                        borderRadius: '2px',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        transition: 'all 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'var(--quiet-brass)')}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#EAE8E2')}
+                    >
+                      <div>
+                        <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1rem', color: '#111413', display: 'block' }}>
+                          {res.title}
+                        </span>
+                        <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', color: '#6A706E' }}>
+                          {res.desc}
+                        </span>
+                      </div>
+                      <ArrowRight size={14} color="#B69B65" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         )}
