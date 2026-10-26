@@ -1,0 +1,534 @@
+/* ==========================================================================
+   BANHAM AUTHENTIC TYPOGRAPHY SYSTEM
+   Headlines: IvarHeadline (Regular 400) & IvarText (Regular 400 / Italic)
+   Body / UI: Neue Haas Grotesk Pro 55 Roman (Regular 400 & Medium 500)
+   ========================================================================== */
+
+@font-face {
+  font-family: 'IvarHeadline';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/IvarHeadline-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IvarText';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  ascent-override: 90%;
+  src: url('/fonts/IvarText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'IvarItalic';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  ascent-override: 90%;
+  src: url('/fonts/IvarText-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Pro 55 Roman';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/NHaasGroteskTXPro-55Rg.woff2') format('woff2');
+}
+
+:root {
+  /* Brand Color Palette */
+  --warm-paper: #F3F0E7;
+  --warm-paper-light: #FAF8F4;
+  --warm-paper-dark: #E6E1D3;
+  --warm-paper-subtle: #DCD6C5;
+
+  --hive-forest: #173D33;
+  --hive-forest-deep: #0F2620;
+  --hive-forest-dark: #0A1B16;
+  --hive-forest-soft: #245246;
+
+  --quiet-brass: #B69B65;
+  --quiet-brass-light: #C9B283;
+  --quiet-brass-dark: #8E7647;
+  --quiet-brass-subtle: rgba(182, 155, 101, 0.22);
+  --quiet-brass-border: rgba(182, 155, 101, 0.32);
+
+  --lounge-clay: #804C3B;
+  --lounge-clay-deep: #4A281E;
+  --lounge-clay-dark: #2A140E;
+  --lounge-clay-soft: #9E614E;
+
+  --automotive-slate: #293F46;
+  --automotive-slate-deep: #162428;
+  --automotive-slate-dark: #0E171A;
+  --automotive-slate-soft: #3B5760;
+
+  --charcoal-ink: #141716;
+  --charcoal-deep: #0D100F;
+  --charcoal-soft: #2A302E;
+
+  /* Typography Families (Banham Exact Match) */
+  --font-serif: 'IvarHeadline', 'IvarText', Cambo, Georgia, 'Times New Roman', serif;
+  --font-serif-body: 'IvarText', 'IvarHeadline', Cambo, Georgia, serif;
+  --font-serif-italic: 'IvarItalic', 'IvarText', Georgia, italic, serif;
+  --font-sans: 'Neue Haas Grotesk Pro 55 Roman', 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Typographic Scale & Metrics (Editorial Standard) */
+  --text-hero-size: clamp(2.65rem, 5.4vw, 4.85rem); /* 42.4px to 77.6px */
+  --text-hero-lh: 0.94;                             /* 0.88 - 0.98 ratio */
+
+  --text-business-size: clamp(2.15rem, 3.8vw, 3.45rem); /* 34.4px to 55.2px */
+  --text-business-lh: 1.05;
+
+  --text-section-size: clamp(1.95rem, 3.2vw, 2.85rem);  /* 31.2px to 45.6px */
+  --text-section-lh: 1.12;
+
+  --text-card-size: 1.35rem;                        /* 21.6px */
+  --text-card-lh: 1.22;
+
+  --text-body-size: clamp(0.875rem, 1vw, 0.95rem);  /* 14px to 15.2px */
+  --text-body-lh: 1.72;                             /* 1.6 - 1.8 ratio */
+  --text-body-max: 56ch;                            /* 50 - 65 characters */
+
+  --text-nav-size: 0.8125rem;                       /* 13px */
+  --text-nav-weight: 500;
+  --text-nav-tracking: 0.03em;                      /* Normal tracking */
+
+  --text-eyebrow-size: 0.6875rem;                   /* 11px */
+  --text-eyebrow-tracking: 0.14em;                  /* Restrained 0.12 - 0.16em */
+
+  --text-button-size: 0.8125rem;                    /* 13px */
+  --text-button-weight: 500;
+  --text-button-tracking: 0.06em;
+
+  /* Transitions & Motion Curves */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: #FFFFFF;
+  color: #141716;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #FFFFFF;
+  color: #141716;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F3F0;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--quiet-brass);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hive-forest);
+}
+
+/* Base Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #111413;
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  font-weight: 400;
+  line-height: var(--text-body-lh);
+  color: #4A504E;
+  max-width: var(--text-body-max);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: var(--transition-smooth);
+}
+
+/* Banham-Style Solid Buttons */
+.btn-banham-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 2.25rem;
+  background-color: #FFFFFF;
+  color: #111413;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1px;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-banham-white:hover {
+    background-color: #F8F7F4;
+    color: #000000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.btn-banham-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.85rem 2.25rem;
+  background-color: #173D33;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px solid #173D33;
+  border-radius: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(23, 61, 51, 0.2);
+  transition: var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-banham-dark:hover {
+    background-color: #0F2620;
+    border-color: #0F2620;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(15, 38, 32, 0.3);
+  }
+}
+
+/* Floating Concierge Action Widget (Matches Banham 'Book a Free Survey' button in Screenshot 4) */
+.banham-floating-pill {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1.45rem;
+  background-color: #2D3748;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .banham-floating-pill:hover {
+    background-color: #1A202C;
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+  }
+}
+
+/* Clean Underline Link (Matches Banham 'Discover Keyholding' in Screenshot 2) */
+.banham-underline-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: #111413;
+  position: relative;
+  padding-bottom: 0.25rem;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: color 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .banham-underline-link:hover {
+    color: var(--hive-forest);
+  }
+}
+
+/* Typographic Utility Classes */
+.font-editorial-headline {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.font-editorial-sub {
+  font-family: var(--font-sans);
+  font-size: var(--text-eyebrow-size);
+  letter-spacing: var(--text-eyebrow-tracking);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.editorial-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  max-width: var(--text-body-max);
+  color: var(--warm-paper-dark);
+  font-weight: 300;
+}
+
+/* ==========================================================================
+   MOTION SYSTEM (Crafted from glitch motion reference: masked reveals,
+   subtle image scaling, directional reveals & restrained transitions)
+   ========================================================================== */
+
+/* Masked Headline Reveal */
+.mask-reveal-wrap {
+  display: block;
+  overflow: hidden;
+  line-height: inherit;
+}
+
+.mask-reveal-item {
+  display: block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+
+.mask-reveal-item.is-revealed,
+.is-revealed .mask-reveal-item {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* Hero Background Image Settle */
+.hero-image-settle {
+  transform: scale(1.06);
+  transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.hero-image-settle.is-settled {
+  transform: scale(1.0);
+}
+
+/* Scroll-Triggered Fade & Slide Reveals */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up.is-revealed,
+.is-revealed .reveal-fade-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
+}
+
+.reveal-fade.is-revealed,
+.is-revealed .reveal-fade {
+  opacity: 1;
+}
+
+/* Directional Portrait Reveal for Founder Section */
+.directional-portrait-reveal {
+  clip-path: inset(0 100% 0 0);
+  transform: scale(1.04);
+  transition: clip-path 1.25s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: clip-path, transform;
+}
+
+.directional-portrait-reveal.is-revealed,
+.is-revealed .directional-portrait-reveal {
+  clip-path: inset(0 0% 0 0);
+  transform: scale(1.0);
+}
+
+/* Restrained Quiet Brass Button */
+.btn-brass-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.6rem 1.3rem;
+  border: 1px solid var(--quiet-brass);
+  background: rgba(18, 22, 21, 0.45);
+  color: var(--warm-paper);
+  font-family: var(--font-sans);
+  font-size: var(--text-button-size);
+  font-weight: var(--text-button-weight);
+  letter-spacing: var(--text-button-tracking);
+  border-radius: 1px;
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-brass-outline:hover {
+    background: var(--quiet-brass);
+    color: var(--charcoal-deep);
+    border-color: var(--quiet-brass-light);
+    transform: translateY(-1px);
+  }
+}
+
+/* Editorial Underline CTA & Micro-Arrow Translation */
+.editorial-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-button-size);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding-bottom: 0.25rem;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.editorial-link .arrow-icon {
+  font-size: 1rem;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 1px;
+  background-color: currentColor;
+  transition: width 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .editorial-link:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+  .editorial-link:hover::after {
+    width: 100%;
+  }
+}
+
+/* Layout Containers */
+.container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+/* Clean Editorial Tag Label */
+.side-tag-item {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: rgba(10, 14, 13, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .mask-reveal-item,
+  .hero-image-settle,
+  .reveal-fade-up,
+  .reveal-fade,
+  .directional-portrait-reveal,
+  .showcase-bg,
+  .overview-card,
+  .card-img {
+    transform: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
+

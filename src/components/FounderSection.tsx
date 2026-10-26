@@ -1,0 +1,285 @@
+import React from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+
+interface FounderSectionProps {
+  onOpenEnquire?: () => void;
+}
+
+export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire }) => {
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.18 });
+
+  return (
+    <section
+      ref={ref}
+      id="about"
+      aria-label="About the Founder"
+      style={{
+        backgroundColor: '#0F2620', // Hive Forest deep panel
+        borderBottom: '1px solid rgba(182, 155, 101, 0.22)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <div 
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1.15fr',
+          minHeight: '600px',
+        }}
+        className="founder-grid"
+      >
+        {/* Left: Asymmetrical Portrait Screen with Directional Image Reveal */}
+        <div 
+          style={{
+            position: 'relative',
+            overflow: 'hidden',
+            backgroundColor: '#121615',
+            minHeight: '440px',
+          }}
+        >
+          {/* Portrait Image: Authentic photo of Founder & Visionary Rahat Khan */}
+          <img
+            src="/images/founder.jpg"
+            alt="Rahat Khan — Founder & Visionary"
+            className={`directional-portrait-reveal ${isRevealed ? 'is-revealed' : ''}`}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center 22%',
+            }}
+          />
+
+          {/* Subtle edge transition to text panel */}
+          <div 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(90deg, transparent 86%, rgba(15, 38, 32, 0.7) 100%)',
+            }}
+          />
+
+          {/* Lower Left Tag */}
+          <div 
+            className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
+            style={{
+              position: 'absolute',
+              bottom: '2.25rem',
+              left: '2.25rem',
+              zIndex: 10,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.65rem',
+              transitionDelay: '0.4s',
+            }}
+          >
+            <div 
+              style={{
+                backgroundColor: 'rgba(15, 38, 32, 0.9)',
+                border: '1px solid rgba(182, 155, 101, 0.3)',
+                padding: '0.4rem 0.85rem',
+                borderRadius: '1px',
+              }}
+            >
+              <span 
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'var(--text-eyebrow-size)',
+                  letterSpacing: 'var(--text-eyebrow-tracking)',
+                  textTransform: 'uppercase',
+                  color: 'var(--quiet-brass)',
+                  fontWeight: 500,
+                }}
+              >
+                Founder & Visionary
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Hive Forest Editorial Text Panel with Staggered Copy */}
+        <div 
+          style={{
+            backgroundColor: '#173D33', // Signature Hive Forest Anchor
+            padding: '4.5rem 3.75rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            position: 'relative',
+          }}
+          className="founder-content"
+        >
+          <div style={{ position: 'relative', zIndex: 5, maxWidth: '560px' }}>
+            {/* Eyebrow: Stagger 0.15s */}
+            <div 
+              className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
+              style={{ marginBottom: '0.85rem', transitionDelay: '0.15s' }}
+            >
+              <span 
+                style={{ 
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 'var(--text-eyebrow-size)',
+                  letterSpacing: 'var(--text-eyebrow-tracking)',
+                  textTransform: 'uppercase',
+                  color: 'var(--quiet-brass)',
+                  fontWeight: 500,
+                }}
+              >
+                ABOUT
+              </span>
+            </div>
+
+            {/* Headline: Masked line reveals */}
+            <h2
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: 'var(--text-section-size)',
+                lineHeight: 'var(--text-section-lh)',
+                fontWeight: 400,
+                color: 'var(--warm-paper)',
+                marginBottom: '1.65rem',
+                letterSpacing: '-0.015em',
+                maxWidth: '18ch',
+              }}
+            >
+              <span className="mask-reveal-wrap">
+                <span 
+                  className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
+                  style={{ transitionDelay: '0.28s' }}
+                >
+                  Built on passion.
+                </span>
+              </span>
+              <span className="mask-reveal-wrap">
+                <span 
+                  className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
+                  style={{ transitionDelay: '0.46s' }}
+                >
+                  Driven by purpose.
+                </span>
+              </span>
+            </h2>
+
+            {/* Founder Vision Description: Stagger 0.62s */}
+            <p
+              className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
+              style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 'var(--text-body-size)',
+                color: 'var(--warm-paper-dark)',
+                lineHeight: 'var(--text-body-lh)',
+                maxWidth: 'var(--text-body-max)',
+                marginBottom: '2.5rem',
+                fontWeight: 400,
+                transitionDelay: '0.62s',
+              }}
+            >
+              HIVE RK Enterprises is the result of a vision to create more than just businesses — it's a commitment to curate meaningful experiences. What started as a passion for exceptional hospitality and fine automobiles has grown into a unified enterprise, built on trust, quality and a relentless pursuit of excellence.
+            </p>
+
+            {/* Split row: Typographic Signature on left + Quote on right (Stagger 0.78s) */}
+            <div 
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'auto 1fr',
+                alignItems: 'center',
+                gap: '2.5rem',
+                paddingTop: '1.75rem',
+                borderTop: '1px solid rgba(182, 155, 101, 0.22)',
+                transitionDelay: '0.78s',
+              }}
+              className={`signature-quote-split reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
+            >
+              {/* Dignified Editorial Author Lockup */}
+              <div>
+                <div 
+                  style={{ 
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.55rem',
+                    fontWeight: 400,
+                    color: 'var(--warm-paper)',
+                    lineHeight: 1.1,
+                    letterSpacing: '0.01em',
+                    marginBottom: '0.2rem',
+                  }}
+                >
+                  Rahat Khan
+                </div>
+                <span 
+                  style={{
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: '0.6875rem',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    color: 'var(--quiet-brass)',
+                    fontWeight: 500,
+                    display: 'block',
+                  }}
+                >
+                  Founder & Visionary
+                </span>
+              </div>
+
+              {/* Vertical divider and Quote: Banham IvarItalic */}
+              <div 
+                style={{
+                  borderLeft: '1px solid rgba(182, 155, 101, 0.3)',
+                  paddingLeft: '1.75rem',
+                }}
+                className="quote-column"
+              >
+                <blockquote
+                  style={{
+                    fontFamily: 'var(--font-serif-italic)',
+                    fontSize: 'clamp(1.1rem, 1.35vw, 1.3rem)',
+                    lineHeight: 1.45,
+                    color: 'var(--warm-paper)',
+                    margin: 0,
+                    fontWeight: 400,
+                    fontStyle: 'italic',
+                    letterSpacing: '-0.01em',
+                  }}
+                >
+                  &ldquo;It's not just about what we do, but how we make people feel.&rdquo;
+                </blockquote>
+              </div>
+            </div>
+
+            {/* Direct Banham Button to Enquire */}
+            {onOpenEnquire && (
+              <div style={{ marginTop: '2.5rem' }}>
+                <button
+                  onClick={onOpenEnquire}
+                  className="btn-banham-white"
+                >
+                  Enquire with Rahat Khan's Office
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 960px) {
+          .founder-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .founder-content {
+            padding: 3.5rem 1.75rem !important;
+          }
+          .signature-quote-split {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+          .quote-column {
+            border-left: none !important;
+            padding-left: 0 !important;
+            border-top: 1px solid rgba(182, 155, 101, 0.22) !important;
+            padding-top: 1.25rem !important;
+          }
+        }
+      `}</style>
+    </section>
+  );
+};
