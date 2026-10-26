@@ -53,7 +53,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
         </video>
       </div>
 
-      {/* Subtle charcoal gradient strictly behind text on the left */}
+      {/* Subtle black gradient strictly behind text on the left */}
       <div 
         style={{
           position: 'absolute',
@@ -61,10 +61,10 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
           zIndex: 1,
           background: `
             linear-gradient(90deg, 
-              rgba(15, 38, 32, 0.92) 0%, 
-              rgba(15, 38, 32, 0.74) 28%, 
-              rgba(15, 38, 32, 0.15) 45%, 
-              transparent 58%
+              rgba(0, 0, 0, 0.90) 0%, 
+              rgba(0, 0, 0, 0.72) 30%, 
+              rgba(0, 0, 0, 0.15) 48%, 
+              transparent 62%
             )
           `,
         }}
@@ -92,7 +92,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
                 fontSize: 'var(--text-eyebrow-size)',
                 letterSpacing: 'var(--text-eyebrow-tracking)',
                 textTransform: 'uppercase',
-                color: 'var(--quiet-brass)',
+                color: '#FFFFFF',
                 fontWeight: 500,
               }}
             >
@@ -107,7 +107,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
               fontSize: 'var(--text-section-size)',
               lineHeight: '1.05',
               fontWeight: 400,
-              color: 'var(--warm-paper)',
+              color: '#FFFFFF',
               marginBottom: '1.65rem',
               letterSpacing: '-0.015em',
               textShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
@@ -142,14 +142,14 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
               className="editorial-link"
               id="closing-cta-link"
               style={{
-                color: 'var(--warm-paper)',
+                color: '#FFFFFF',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.65rem',
               }}
             >
               <span>Explore all businesses</span>
-              <ArrowRight size={15} className="arrow-icon" style={{ color: 'var(--quiet-brass)' }} />
+              <ArrowRight size={15} className="arrow-icon" style={{ color: '#FFFFFF' }} />
             </button>
           </div>
         </div>

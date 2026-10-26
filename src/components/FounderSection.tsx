@@ -14,8 +14,8 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
       id="about"
       aria-label="About the Founder"
       style={{
-        backgroundColor: '#0F2620', // Hive Forest deep panel
-        borderBottom: '1px solid rgba(182, 155, 101, 0.22)',
+        backgroundColor: '#000000',
+        borderBottom: '1px solid #1A1A1A',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -33,7 +33,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
           style={{
             position: 'relative',
             overflow: 'hidden',
-            backgroundColor: '#121615',
+            backgroundColor: '#000000',
             minHeight: '440px',
           }}
         >
@@ -55,52 +55,15 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(90deg, transparent 86%, rgba(15, 38, 32, 0.7) 100%)',
+              background: 'linear-gradient(90deg, transparent 86%, rgba(0, 0, 0, 0.7) 100%)',
             }}
           />
-
-          {/* Lower Left Tag */}
-          <div 
-            className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
-            style={{
-              position: 'absolute',
-              bottom: '2.25rem',
-              left: '2.25rem',
-              zIndex: 10,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.65rem',
-              transitionDelay: '0.4s',
-            }}
-          >
-            <div 
-              style={{
-                backgroundColor: 'rgba(15, 38, 32, 0.9)',
-                border: '1px solid rgba(182, 155, 101, 0.3)',
-                padding: '0.4rem 0.85rem',
-                borderRadius: '1px',
-              }}
-            >
-              <span 
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 'var(--text-eyebrow-size)',
-                  letterSpacing: 'var(--text-eyebrow-tracking)',
-                  textTransform: 'uppercase',
-                  color: 'var(--quiet-brass)',
-                  fontWeight: 500,
-                }}
-              >
-                Founder & Visionary
-              </span>
-            </div>
-          </div>
         </div>
 
-        {/* Right: Hive Forest Editorial Text Panel with Staggered Copy */}
+        {/* Right: Black Editorial Text Panel with Staggered Copy */}
         <div 
           style={{
-            backgroundColor: '#173D33', // Signature Hive Forest Anchor
+            backgroundColor: '#000000',
             padding: '4.5rem 3.75rem',
             display: 'flex',
             flexDirection: 'column',
@@ -121,7 +84,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
                   fontSize: 'var(--text-eyebrow-size)',
                   letterSpacing: 'var(--text-eyebrow-tracking)',
                   textTransform: 'uppercase',
-                  color: 'var(--quiet-brass)',
+                  color: '#FFFFFF',
                   fontWeight: 500,
                 }}
               >
@@ -185,7 +148,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
                 alignItems: 'center',
                 gap: '2.5rem',
                 paddingTop: '1.75rem',
-                borderTop: '1px solid rgba(182, 155, 101, 0.22)',
+                borderTop: '1px solid rgba(255, 255, 255, 0.15)',
                 transitionDelay: '0.78s',
               }}
               className={`signature-quote-split reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
@@ -211,7 +174,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
                     fontSize: '0.6875rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
-                    color: 'var(--quiet-brass)',
+                    color: '#FFFFFF',
                     fontWeight: 500,
                     display: 'block',
                   }}
@@ -223,7 +186,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
               {/* Vertical divider and Quote: Banham IvarItalic */}
               <div 
                 style={{
-                  borderLeft: '1px solid rgba(182, 155, 101, 0.3)',
+                  borderLeft: '1px solid rgba(255, 255, 255, 0.2)',
                   paddingLeft: '1.75rem',
                 }}
                 className="quote-column"
@@ -275,7 +238,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
           .quote-column {
             border-left: none !important;
             padding-left: 0 !important;
-            border-top: 1px solid rgba(182, 155, 101, 0.22) !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
             padding-top: 1.25rem !important;
           }
         }

@@ -23,10 +23,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
   };
 
   return (
-    <footer 
+    <footer
       id="contact"
       style={{
-        backgroundColor: '#0A1C17', // Hive Forest Deep brand anchor
+        backgroundColor: '#080808ff', // Hive Forest Deep brand anchor
         borderTop: '1px solid rgba(182, 155, 101, 0.25)',
         paddingTop: '3.75rem',
         paddingBottom: '2.5rem',
@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
     >
       <div className="container">
         {/* Upper Row: Logo, Navigation, and Enquire Button */}
-        <div 
+        <div
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -58,33 +58,33 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
                   strokeWidth="3.5"
                 />
               </svg>
-              <span style={{ 
-                position: 'relative', 
-                fontFamily: 'var(--font-serif)', 
-                fontSize: '1.15rem', 
-                fontWeight: 500, 
-                color: 'var(--quiet-brass)' 
+              <span style={{
+                position: 'relative',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.15rem',
+                fontWeight: 500,
+                color: 'var(--quiet-brass)'
               }}>
                 H
               </span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <span style={{ 
-                fontFamily: 'var(--font-serif)', 
-                fontSize: '1.05rem', 
-                fontWeight: 500, 
-                letterSpacing: '0.08em', 
+              <span style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: '1.05rem',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
                 color: 'var(--warm-paper)',
                 lineHeight: 1.15
               }}>
                 HIVE RK
               </span>
-              <span style={{ 
-                fontFamily: 'var(--font-sans)', 
-                fontSize: '0.58rem', 
-                letterSpacing: '0.16em', 
-                color: 'var(--quiet-brass)', 
+              <span style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: '0.58rem',
+                letterSpacing: '0.16em',
+                color: 'var(--quiet-brass)',
                 textTransform: 'uppercase',
                 fontWeight: 500,
               }}>
@@ -95,13 +95,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
 
           {/* Navigation Links: Manrope 12–14px medium */}
           <nav>
-            <ul 
-              style={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                gap: '2.25rem', 
-                listStyle: 'none', 
-                margin: 0, 
+            <ul
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '2.25rem',
+                listStyle: 'none',
+                margin: 0,
                 padding: 0,
                 flexWrap: 'wrap',
               }}
@@ -187,7 +187,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
         </div>
 
         {/* Subtle Horizontal Divider */}
-        <div 
+        <div
           style={{
             height: '1px',
             width: '100%',
@@ -197,7 +197,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
         />
 
         {/* Lower Row: Copyright & Industry Tags */}
-        <div 
+        <div
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -207,11 +207,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
           }}
         >
           {/* Copyright: Manrope 12px */}
-          <p 
-            style={{ 
+          <p
+            style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '0.75rem', 
-              color: 'var(--warm-paper-subtle)', 
+              fontSize: '0.75rem',
+              color: 'var(--warm-paper-subtle)',
               margin: 0,
               fontWeight: 400,
             }}
@@ -220,13 +220,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
           </p>
 
           {/* Categories: Manrope 11px, 0.14em tracking */}
-          <p 
-            style={{ 
+          <p
+            style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--text-eyebrow-size)', 
-              letterSpacing: 'var(--text-eyebrow-tracking)', 
-              textTransform: 'uppercase', 
-              color: 'var(--quiet-brass)', 
+              fontSize: 'var(--text-eyebrow-size)',
+              letterSpacing: 'var(--text-eyebrow-tracking)',
+              textTransform: 'uppercase',
+              color: 'var(--quiet-brass)',
               opacity: 0.9,
               margin: 0,
               fontWeight: 500,
