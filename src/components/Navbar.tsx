@@ -147,12 +147,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span
                 style={{
                   fontFamily: 'var(--font-sans)',
-                  fontSize: '0.52rem',
-                  letterSpacing: '0.24em',
+                  fontSize: '0.6875rem',
+                  letterSpacing: '0.18em',
                   color: '#111413',
                   textTransform: 'uppercase',
-                  fontWeight: 600,
-                  marginTop: '4px',
+                  fontWeight: 500,
+                  marginTop: '2px',
                 }}
               >
                 ENTERPRISES
@@ -301,7 +301,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', letterSpacing: '0.12em', color: '#111413' }}>
                     HIVE RK
                   </span>
-                  <span style={{ fontSize: '0.55rem', letterSpacing: '0.18em', color: '#111413', textTransform: 'uppercase', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.6875rem', letterSpacing: '0.18em', color: '#111413', textTransform: 'uppercase', fontWeight: 500 }}>
                     ENTERPRISES
                   </span>
                 </div>
@@ -332,7 +332,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       <span style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: '#111413', display: 'block' }}>
                         {item.label}
                       </span>
-                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.72rem', color: '#777C7A', display: 'block', marginTop: '2px' }}>
+                      <span style={{ fontFamily: 'var(--font-sans)', fontSize: '0.75rem', color: '#777C7A', display: 'block', marginTop: '2px' }}>
                         {item.sub}
                       </span>
                     </a>

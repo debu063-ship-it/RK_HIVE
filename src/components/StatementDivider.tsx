@@ -51,13 +51,14 @@ export const StatementDivider: React.FC = () => {
               fontSize: 'clamp(0.95rem, 1.15vw, 1.05rem)',
               color: '#4A504E',
               lineHeight: 1.72,
-              maxWidth: '620px',
+              maxWidth: '54ch',
               margin: '0 auto',
               fontWeight: 400,
+              textWrap: 'pretty',
               transitionDelay: '0.25s',
             }}
           >
-            Marrying contemporary culinary hospitality, refined nightlife ambience, and bespoke automotive engineering — every experience across HIVE RK Enterprises is crafted to inspire.
+            Marrying contemporary culinary hospitality, refined nightlife ambience, and bespoke automotive engineering — every experience across HIVE RK Enterprises is crafted to&nbsp;inspire.
           </p>
 
           {/* Quiet Brass Accent Divider */}

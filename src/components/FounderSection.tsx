@@ -73,25 +73,6 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
           className="founder-content"
         >
           <div style={{ position: 'relative', zIndex: 5, maxWidth: '560px' }}>
-            {/* Eyebrow: Stagger 0.15s */}
-            <div 
-              className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
-              style={{ marginBottom: '0.85rem', transitionDelay: '0.15s' }}
-            >
-              <span 
-                style={{ 
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 'var(--text-eyebrow-size)',
-                  letterSpacing: 'var(--text-eyebrow-tracking)',
-                  textTransform: 'uppercase',
-                  color: '#FFFFFF',
-                  fontWeight: 500,
-                }}
-              >
-                ABOUT
-              </span>
-            </div>
-
             {/* Headline: Masked line reveals */}
             <h2
               style={{
@@ -103,12 +84,13 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
                 marginBottom: '1.65rem',
                 letterSpacing: '-0.015em',
                 maxWidth: '18ch',
+                textWrap: 'balance',
               }}
             >
               <span className="mask-reveal-wrap">
                 <span 
                   className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
-                  style={{ transitionDelay: '0.28s' }}
+                  style={{ transitionDelay: '0.15s' }}
                 >
                   Built on passion.
                 </span>
@@ -116,14 +98,14 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
               <span className="mask-reveal-wrap">
                 <span 
                   className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
-                  style={{ transitionDelay: '0.46s' }}
+                  style={{ transitionDelay: '0.3s' }}
                 >
                   Driven by purpose.
                 </span>
               </span>
             </h2>
 
-            {/* Founder Vision Description: Stagger 0.62s */}
+            {/* Founder Vision Description: Stagger 0.45s */}
             <p
               className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
               style={{
@@ -131,10 +113,11 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenEnquire })
                 fontSize: 'var(--text-body-size)',
                 color: 'var(--warm-paper-dark)',
                 lineHeight: 'var(--text-body-lh)',
-                maxWidth: 'var(--text-body-max)',
+                maxWidth: '56ch',
                 marginBottom: '2.5rem',
                 fontWeight: 400,
-                transitionDelay: '0.62s',
+                textWrap: 'pretty',
+                transitionDelay: '0.45s',
               }}
             >
               HIVE RK Enterprises is the result of a vision to create more than just businesses — it's a commitment to curate meaningful experiences. What started as a passion for exceptional hospitality and fine automobiles has grown into a unified enterprise, built on trust, quality and a relentless pursuit of excellence.

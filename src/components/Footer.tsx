@@ -82,11 +82,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenEnquire, onOpenContact }) 
               </span>
               <span style={{
                 fontFamily: 'var(--font-sans)',
-                fontSize: '0.58rem',
-                letterSpacing: '0.16em',
+                fontSize: '0.6875rem',
+                letterSpacing: '0.18em',
                 color: 'var(--quiet-brass)',
                 textTransform: 'uppercase',
                 fontWeight: 500,
+                marginTop: '2px',
               }}>
                 ENTERPRISES
               </span>

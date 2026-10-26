@@ -122,10 +122,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreClick, onOpenEnquire }) => 
               fontSize: 'clamp(0.95rem, 1.15vw, 1.05rem)',
               color: 'rgba(255, 255, 255, 0.94)',
               lineHeight: 1.68,
-              maxWidth: '680px',
+              maxWidth: '56ch',
               margin: '0 auto 2.5rem',
               fontWeight: 400,
               textShadow: '0 2px 10px rgba(0, 0, 0, 0.5)',
+              textWrap: 'pretty',
               transitionDelay: '0.45s',
             }}
           >

@@ -81,25 +81,6 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
         }}
       >
         <div style={{ maxWidth: '560px' }}>
-          {/* Eyebrow: Stagger 0.1s */}
-          <div 
-            className={`reveal-fade-up ${isRevealed ? 'is-revealed' : ''}`}
-            style={{ marginBottom: '0.85rem', transitionDelay: '0.1s' }}
-          >
-            <span 
-              style={{ 
-                fontFamily: 'var(--font-sans)',
-                fontSize: 'var(--text-eyebrow-size)',
-                letterSpacing: 'var(--text-eyebrow-tracking)',
-                textTransform: 'uppercase',
-                color: '#FFFFFF',
-                fontWeight: 500,
-              }}
-            >
-              HIVE RK ENTERPRISES
-            </span>
-          </div>
-
           {/* Headline: Masked line reveals */}
           <h2
             style={{
@@ -112,12 +93,13 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
               letterSpacing: '-0.015em',
               textShadow: '0 2px 14px rgba(0, 0, 0, 0.45)',
               maxWidth: '16ch',
+              textWrap: 'balance',
             }}
           >
             <span className="mask-reveal-wrap">
               <span 
                 className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
-                style={{ transitionDelay: '0.22s' }}
+                style={{ transitionDelay: '0.15s' }}
               >
                 Where luxury
               </span>
@@ -125,7 +107,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onExploreAll }) => {
             <span className="mask-reveal-wrap">
               <span 
                 className={`mask-reveal-item ${isRevealed ? 'is-revealed' : ''}`}
-                style={{ transitionDelay: '0.42s' }}
+                style={{ transitionDelay: '0.3s' }}
               >
                 meets lifestyle.
               </span>
